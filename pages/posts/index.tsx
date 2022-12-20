@@ -1,4 +1,5 @@
 import { InferGetStaticPropsType } from "next"
+import Link from "next/link"
 
 interface Post{
     id:number,
@@ -18,7 +19,9 @@ return (
     {posts.map((post: Post)=>{
         return (
             <div key={post.id}>
+                <Link href={`posts/${post.id}`} passHref>
                 <h2>{post.id} {post.title}</h2>
+                </Link>
                 <hr />
             </div>
         )
