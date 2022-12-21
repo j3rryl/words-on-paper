@@ -1,1 +1,10 @@
 String literals are interesting
+
+eg ecommerce page use fallback true when many static pages depend on data
+if wait time is few miliseconds then use fallback='blocking'
+INcremental Static Generation: ISR -> stale data reduce load time->getStaticProps
+why params:[ id: 1] better than id:$id prefetch at id 1 then load the rest on request
+ISR-> update app without rebuilding  stale while revalidate 
+
+
+!important client can't see server stuff, eg console.log wont show in browser  only VS terminal
