@@ -5,6 +5,7 @@ interface Newss{
     title: string
     author: string
 }
+//change iyo static to server side
 function NewsPostList({news}: InferGetStaticPropsType<typeof getServerSideProps>) {
   return (
     <>
