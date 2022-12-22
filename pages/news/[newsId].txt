@@ -1,0 +1,45 @@
+import { InferGetStaticPropsType } from "next"
+import { useRouter } from "next/router"
+
+function NewsOne({newss}: InferGetStaticPropsType<typeof getStaticProps>) {
+    const router = useRouter()
+  if(router.isFallback){
+    return(
+      <h1>Loading...</h1>
+    )
+  }
+  return (
+    <div key={newss.id}>
+        <h3>{newss.title}</h3>
+        <h3>{newss.author}</h3>
+    </div>
+  )
+}
+
+export default NewsOne
+export async function getStaticPaths(){
+    return{
+        paths: [
+            {
+                params:{newsId:'1'}
+            }
+        ],
+        fallback:true
+    }
+}
+export async function getStaticProps(context: any) {
+    const {params}=context
+    const res = await fetch(`http://localhost:5000/news/${params.newsId}`)
+    const data = await res.json()
+    if(!data.id){
+        return{
+            notFound:true
+        }
+    }
+    return {
+        props:{
+            newss:data,
+        }
+    }
+    
+}

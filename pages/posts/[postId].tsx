@@ -55,7 +55,7 @@ export async function getStaticPaths(){
 }
 export async function getStaticProps(context: any){
     const {params} = context
-    const response  = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
+    const response  = await fetch(`http://localhost:5000/posts/${params.postId}`)
     const data = await response.json()
     console.log(`Generating page for /posts/${params.postId}`)
     if(!data.id){

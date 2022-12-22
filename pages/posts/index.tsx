@@ -32,13 +32,13 @@ return (
 export default PostList
 export async function getStaticProps(){
     console.log('Generating/regenerating')
-const response  = await fetch('https://jsonplaceholder.typicode.com/posts')
+const response  = await fetch(`http://localhost:5000/posts`)
 const data = await response.json()
 
 return{
   props:{
     posts:data.slice(0,3),
   },
-  revalidate:10,
+  revalidate:20,
 }
 }

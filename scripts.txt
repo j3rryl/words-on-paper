@@ -6,5 +6,8 @@ INcremental Static Generation: ISR -> stale data reduce load time->getStaticProp
 why params:[ id: 1] better than id:$id prefetch at id 1 then load the rest on request
 ISR-> update app without rebuilding  stale while revalidate 
 
+SSR
+
 
 !important client can't see server stuff, eg console.log wont show in browser  only VS terminal
+
