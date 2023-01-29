@@ -1,6 +1,7 @@
 import { InferGetServerSidePropsType } from "next"
 import { useRouter } from "next/router"
-import { useState } from "react"
+import { ReactElement, useState } from "react"
+import Header from "./components/header"
 
 function EventList({news}: InferGetServerSidePropsType<typeof getServerSideProps>){
     const [events, setEvents] = useState(news)
@@ -29,6 +30,14 @@ function EventList({news}: InferGetServerSidePropsType<typeof getServerSideProps
 
 }
 export default EventList
+EventList.getLayout = function PageLayout(page: ReactElement){
+    return (
+        <>
+        <Header/>
+        {page}
+        </>
+    )
+}
 export async function getServerSideProps(context: any){
     const {query} = context
     const {category} = query
